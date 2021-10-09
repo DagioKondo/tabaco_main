@@ -148,18 +148,21 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             shareButton.layer.shadowRadius = 5
             shareButton.layer.shadowOffset = CGSize(width: 2, height: 2)
             shareButton.addTarget(self,action: #selector(tapButton(_ :)),for: .touchDown)
+            shareButton.addTarget(self, action: #selector(tapOutsideButton(_:)), for: .touchUpOutside)
             
             gamanButton.layer.cornerRadius = 10
             gamanButton.layer.shadowOpacity = 0.5
             gamanButton.layer.shadowRadius = 5
             gamanButton.layer.shadowOffset = CGSize(width: 2, height: 2)
             gamanButton.addTarget(self,action: #selector(tapButton(_ :)),for: .touchDown)
+            gamanButton.addTarget(self, action: #selector(tapOutsideButton(_:)), for: .touchUpOutside)
             
             kitsuenButton.layer.cornerRadius = 10
             kitsuenButton.layer.shadowOpacity = 0.5
             kitsuenButton.layer.shadowRadius = 5
             kitsuenButton.layer.shadowOffset = CGSize(width: 2, height: 2)
             kitsuenButton.addTarget(self,action: #selector(tapButton(_ :)),for: .touchDown)
+            kitsuenButton.addTarget(self, action: #selector(tapOutsideButton(_:)), for: .touchUpOutside)
             
             tableView.reloadData()
         }
@@ -179,6 +182,10 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     @objc func tapButton(_ sender:UIButton){
         buttonAnimated.startAnimation(sender: sender)
+    }
+    
+    @objc func tapOutsideButton(_ sender:UIButton){
+        buttonAnimated.endAnimation(sender: sender)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
