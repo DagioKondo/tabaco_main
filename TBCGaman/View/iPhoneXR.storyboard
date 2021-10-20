@@ -171,10 +171,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NXW-bI-wbH">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="844"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jQS-Y2-daR">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="844"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <gestureRecognizers/>
@@ -561,8 +561,11 @@
                         <color key="backgroundColor" red="0.93725490570000003" green="0.8215990217533522" blue="0.74980075186449147" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <connections>
+                        <outlet property="dateLabel" destination="xJG-DC-gP3" id="ucp-G9-okR"/>
+                        <outlet property="gamanLabel" destination="84b-1q-k4Y" id="EKH-KU-vtY"/>
                         <outlet property="kinenButton" destination="hI5-TZ-qDN" id="gCA-fg-eHt"/>
                         <outlet property="kitsuenButton" destination="WxL-FY-KlV" id="QCp-9N-xFz"/>
+                        <outlet property="kitsuenLabel" destination="Gw6-CE-AEC" id="Yos-A0-9VD"/>
                         <outlet property="numberView" destination="imC-D7-GAU" id="izd-HU-fXK"/>
                         <outlet property="swipeCard" destination="fn9-UD-OiQ" id="OJN-bt-OjD"/>
                         <outlet property="swipeView" destination="Yid-9e-Ga0" id="0wb-4X-CtX"/>

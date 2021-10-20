@@ -119,10 +119,7 @@
 				862761862704B45100ACF0DE /* SceneDelegate.swift */,
 				862761842704B45100ACF0DE /* AppDelegate.swift */,
 				862761A92704B80300ACF0DE /* ButtonAnimatedModel.swift */,
-				862761AC2704B80400ACF0DE /* CalenderController.swift */,
-				862761AD2704B80400ACF0DE /* CalenderPresenter.swift */,
-				862761AB2704B80400ACF0DE /* CalenderUseCase.swift */,
-				862761AF2704B80500ACF0DE /* DataItems.swift */,
+				86A03890271369130044803F /* Calendar */,
 				862761B92705DCD700ACF0DE /* TbcCalcModel.swift */,
 				862761DD27089BE800ACF0DE /* LoadDBModel.swift */,
 				862761DF27089C8900ACF0DE /* TbcDataSets.swift */,
@@ -156,6 +153,17 @@
 				8660F494270AD6A20043FA9B /* iPhone11Pro.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		86A03890271369130044803F /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				862761AC2704B80400ACF0DE /* CalenderController.swift */,
+				862761AD2704B80400ACF0DE /* CalenderPresenter.swift */,
+				862761AB2704B80400ACF0DE /* CalenderUseCase.swift */,
+				862761AF2704B80500ACF0DE /* DataItems.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		C5523CE179C21BF1A0B80AE6 /* Frameworks */ = {

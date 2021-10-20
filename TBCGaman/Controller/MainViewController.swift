@@ -62,9 +62,9 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         //追加
         let calendar = Calendar(identifier: .gregorian)//.gregorian→西暦、.japanese→和暦
         let date = calendar.dateComponents([.year, .month, .day], from: Date()) //何年、何月、何日を取得
-        year = String(date.year!)
-        month = String(date.month!)
-        day = String(date.day!)
+        year = String(date.year!) //2021
+        month = String(date.month!) //10
+        day = String(date.day!) //4
         
     }
     //追加
@@ -170,12 +170,13 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func loadDayCountOK(check: Int) {
         if check == 1{
-            gamanCountLabel.text = String(loadDBModel.countdataSets[0].gamanCount)
-            smokeCountLabel.text = String(loadDBModel.countdataSets[0].smokeCount)
-            print(gamanCountLabel.text)
-            print(smokeCountLabel.text)
             gamanCount = loadDBModel.countdataSets[0].gamanCount
             smokeCount = loadDBModel.countdataSets[0].smokeCount
+            gamanCountLabel.text = String(gamanCount)
+            smokeCountLabel.text = String(smokeCount)
+            print(gamanCountLabel.text)
+            print(smokeCountLabel.text)
+            
             loadDBModel.loadTbcData(userID: userID)
         }
     }
@@ -206,8 +207,8 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         lifeSpanCount = tbcCalcModel.lifeSpanCalc(tbcCount: smokeIncrement)
         cellSubTitleArray = ["\(gamanIncrement)","\(priceCount)円","\(smokeIncrement)","\(lifeSpanCount)"]
         
-        print("daigoprice")
-        print("\(loadDBModel.tbcDataSets[0].tbcPrice)")
+//        print("daigoprice")
+//        print("\(loadDBModel.tbcDataSets[0].tbcPrice)")
         var configLabeltext = "※1箱" + "\(loadDBModel.tbcDataSets[0].tbcPrice!)円" + "/" + "\(loadDBModel.tbcDataSets[0].tbcCount!)本" + "に設定中"
         cellStringArray = ["","\(configLabeltext)","","※タバコ1本で寿命が5分半縮むらしいです"]
         
@@ -239,6 +240,8 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     @IBAction func shareButton(_ sender: UIButton) {
+    
+        
         buttonAnimated.endAnimation(sender: sender)
         performSegue(withIdentifier: "ShareVC", sender: self)
     }

@@ -107,6 +107,7 @@ class CalendarViewController: UIViewController, ViewLogic, LoadOKDelegate {
         
         loadDBModel.loadOKDelegate = self
         loadDBModel.loadMonth(year: String(moveDate.year), month: String(moveDate.month), userID: userID)
+        
     }
     
     //月の我慢本数、喫煙本数取得完了
@@ -114,16 +115,19 @@ class CalendarViewController: UIViewController, ViewLogic, LoadOKDelegate {
         print("loadMonthOK")
         print(gamanCountDictionary)
         print(gamanCountDictionary["7"])
+        let moveDate = DateItems.MoveMonth.Request(monthCounter)
         self.gamanCountDictionary = gamanCountDictionary
         self.kitsuenCountDictionary = smokeCountDictionary
-        loadDBModel.loadMonthTotal(year: String(thisYear), month: String(thisMonth), userID: userID)
+        loadDBModel.loadMonthTotal(year: String(moveDate.year), month: String(moveDate.month), userID: userID)
         collectionView.reloadData()
     }
     
     //月の合計取得完了
     func loadMonthCountOK(check: Int) {
-        lifeSpanCountLabel = tbcCalcModel.lifeSpanCalc(tbcCount: loadDBModel.smokeTotal)
-        loadDBModel.loadTbcData(userID: userID)
+        if check == 1{
+            lifeSpanCountLabel = tbcCalcModel.lifeSpanCalc(tbcCount: loadDBModel.smokeTotal)
+            loadDBModel.loadTbcData(userID: userID)
+        }
     }
     
     //値段と一箱あたりの本数取得完了
@@ -181,7 +185,7 @@ extension CalendarViewController {
     private func nextMonth() {
         gamanCountDictionary = [:]
         kitsuenCountDictionary = [:]
-        monthCounter += 1
+        monthCounter = monthCounter + 1
         commonSettingMoveMonth()
     }
     
@@ -219,12 +223,12 @@ extension CalendarViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //        下の書き方はこれと同じ意味
-        //        if section == 0{
-        //            return 7
-        //        }else{
-        //            return (numberOfWeeks * daysPerWeek)
-        //        }
+//                下の書き方はこれと同じ意味
+//                if section == 0{
+//                    return 7
+//                }else if section == 1{
+//                    return (numberOfWeeks * daysPerWeek)
+//                }
         return section == 0 ? 7 : (numberOfWeeks * daysPerWeek)
     }
     
@@ -250,8 +254,9 @@ extension CalendarViewController: UICollectionViewDataSource {
         print(kitsuenCountDictionary["\(calendarlabel.text!)!"])
         if calendarlabel.text! == "" || indexPath.section == 0 || kitsuenCountDictionary["\(calendarlabel.text!)"] == nil ||  gamanCountDictionary["\(calendarlabel.text!)"] == nil{
             return cell
+            ["":0,"":0,"1":3,"2":5]
         }else if kitsuenCountDictionary["\(calendarlabel.text!)"]! > 0 && gamanCountDictionary["\(calendarlabel.text!)"]! > 0{
-            
+    
             calendarCellImageView.image = UIImage(named: "skull")
             calendarCellImageView.isHidden = false
             gamanLabelOfOneDay.isHidden = false
@@ -357,6 +362,7 @@ extension CalendarViewController: UICollectionViewDataSource {
 //MARK:- UICollectionViewDelegateFlowLayout
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {
     
+    //セルのサイズを調整
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let weekWidth = Int(collectionView.frame.width) / daysPerWeek
         let weekHeight = 23
@@ -365,17 +371,19 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
         return indexPath.section == 0 ? CGSize(width: weekWidth, height: weekHeight) : CGSize(width: dayWidth, height: dayHeight)
     }
 
+    //セクションごとの余白を設定
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let surplus = Int(collectionView.frame.width) % daysPerWeek
         let margin = CGFloat(surplus)/2.0
         return UIEdgeInsets(top: 0, left: margin, bottom: 1.5, right: margin)
     }
     
+    //セクションごとに行間の長さを調整
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
-        
     }
 
+    //セル同士の間隔の長さを調整
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
