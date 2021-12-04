@@ -100,16 +100,35 @@ class CalendarViewController: UIViewController, ViewLogic, LoadOKDelegate {
         
         let moveDate = DateItems.MoveMonth.Request(monthCounter)
         zellerResult = zellerCongruence(thisYear,thisMonth,1)//１日が何曜日か（日曜なら０、土曜なら６）
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyyMMdd", options: 0, locale: Locale(identifier: "ja_JP"))
+        dateString = dateFormatter.string(from: Date()) //  　2021/10/4
         if UserDefaults.standard.object(forKey: "userID") != nil{
             userID = UserDefaults.standard.object(forKey: "userID") as! String
             print(userID)
+            loadDBModel.loadOKDelegate = self
+            loadDBModel.loadMonth(year: String(moveDate.year), month: String(moveDate.month), userID: userID)
+        }else{
+            loadDBModel.userIDLoad(date: dateString)
         }
-        
-        loadDBModel.loadOKDelegate = self
-        loadDBModel.loadMonth(year: String(moveDate.year), month: String(moveDate.month), userID: userID)
-        
-    }
     
+    }
+//
+//    func loginOK_userID(check: Int) {
+//        let moveDate = DateItems.MoveMonth.Request(monthCounter)
+//        if check == 1{
+//            userID = loadDBModel.userID
+//            loadDBModel.loadOKDelegate = self
+//            loadDBModel.loadMonth(year: String(moveDate.year), month: String(moveDate.month), userID: userID)
+//        }
+//<<<<<<< HEAD
+//
+//        loadDBModel.loadOKDelegate = self
+//        loadDBModel.loadMonth(year: String(moveDate.year), month: String(moveDate.month), userID: userID)
+//
+//=======
+//>>>>>>> 861dafdf03899f32cfc6918c28acfedff9d5d23e
+//    }
+//
     //月の我慢本数、喫煙本数取得完了
     func loadMonthOK(check: Int, gamanCountDictionary: [String:Int], smokeCountDictionary: [String:Int]) {
         print("loadMonthOK")
