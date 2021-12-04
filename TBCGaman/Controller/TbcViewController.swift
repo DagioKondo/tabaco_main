@@ -22,7 +22,7 @@ class TbcViewController: UIViewController, LoadOKDelegate{
     var tbcPriceAc = UIAlertController()
     var alertAc = UIAlertController()
     
-    //追加したよ！！
+    //追加したよ
     var dateString = String()
     let dateFormatter = DateFormatter()
     var year = String()
