@@ -273,7 +273,7 @@ extension CalendarViewController: UICollectionViewDataSource {
         print(kitsuenCountDictionary["\(calendarlabel.text!)!"])
         if calendarlabel.text! == "" || indexPath.section == 0 || kitsuenCountDictionary["\(calendarlabel.text!)"] == nil ||  gamanCountDictionary["\(calendarlabel.text!)"] == nil{
             return cell
-            ["":0,"":0,"1":3,"2":5]
+//            ["":0,"":0,"1":3,"2":5]
         }else if kitsuenCountDictionary["\(calendarlabel.text!)"]! > 0 && gamanCountDictionary["\(calendarlabel.text!)"]! > 0{
     
             calendarCellImageView.image = UIImage(named: "skull")

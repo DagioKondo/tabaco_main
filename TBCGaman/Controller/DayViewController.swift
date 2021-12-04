@@ -4,7 +4,6 @@
 //
 //  Created by 近藤大伍 on 2021/09/26.
 //
-
 import UIKit
 import Firebase
 import FirebaseFirestore
@@ -205,7 +204,7 @@ class DayViewController: UIViewController,LoadOKDelegate {
     
     
     @IBAction func saveButton(_ sender: Any) {
-        db.collection(userID).document(year).collection(month).document(day).updateData(["smokeCount" : kitsuenCountOfOneDay as Any,"gamanCount":gamanCountOfOneDay as Any])
+        db.collection(userID).document(year).collection(month).document(day).setData(["smokeCount" : kitsuenCountOfOneDay as Any,"gamanCount":gamanCountOfOneDay as Any])
         
         print(gamanIncrement)
         gamanIncrement = gamanIncrement + gamantukaitaiCount
