@@ -560,6 +560,7 @@
                         <color key="backgroundColor" red="0.68627452850000004" green="0.76862752440000004" blue="0.88235294819999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <connections>
+                        <outlet property="dateLabel" destination="vky-yE-FfM" id="krb-0m-CeA"/>
                         <outlet property="gamanLabel" destination="0JX-9p-my7" id="36w-r6-Y2t"/>
                         <outlet property="kinenButton" destination="BJh-Cv-mAK" id="T2I-ua-hZr"/>
                         <outlet property="kitsuenButton" destination="oIv-4Y-hIE" id="v4i-z2-JTW"/>

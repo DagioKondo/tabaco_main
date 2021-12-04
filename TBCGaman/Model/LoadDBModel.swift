@@ -54,8 +54,11 @@ class LoadDBModel {
                 }
                 if let userIDString = result?.user.uid{
                     self.userID = userIDString
+                    UserDefaults.standard.setValue(self.userID, forKey: "userID")
                     print("★★★★★★★★★★★★★★")
                     print(self.userID)
+//                    db.collection(self.userID).document(2021/10/4)
+//                    db.collection(self.userID).document(2021).collection(10).document(4)
 //                    self.db.collection(self.userID).document(date).setData(["gamanCount":0,"smokeCount":0]) { error in
 //                        print(error.debugDescription)
 //                    }
@@ -197,9 +200,7 @@ class LoadDBModel {
         }
     }
 
-    
-    
-    
+  
 }
 
 
